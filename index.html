@@ -1,0 +1,1078 @@
+ position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--red); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.feature-card:hover { transform: translateY(-5px); border-color: var(--red); }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-icon {
+  width: 60px; height: 60px; background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 24px; border-radius: 12px;
+}
+.feature-card h3 {
+  font-family: var(--font-heading); font-size: 28px;
+  letter-spacing: 1px; margin-bottom: 12px; font-weight: 400;
+}
+.feature-card p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+/* ============ АБОНЕМЕНТЫ ============ */
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+}
+@media (max-width: 1024px) { .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }
+
+.pricing-card {
+  padding: 50px 40px; border: 1px solid rgba(255,255,255,0.1);
+  position: relative; transition: var(--transition);
+  background: var(--black-2);
+}
+.pricing-card:hover { transform: translateY(-10px); border-color: var(--red); }
+.pricing-card.featured {
+  background: linear-gradient(135deg, var(--red), #9A0411);
+  border-color: var(--red);
+  transform: scale(1.05);
+}
+.pricing-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+@media (max-width: 1024px) { .pricing-card.featured { transform: none; } .pricing-card.featured:hover { transform: translateY(-10px); } }
+
+.pricing-badge {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--white); color: var(--red);
+  padding: 6px 14px; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700; border-radius: 100px;
+}
+.pricing-name {
+  font-family: var(--font-heading); font-size: 32px;
+  letter-spacing: 2px; margin-bottom: 8px;
+}
+.pricing-desc { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 30px; }
+.pricing-price {
+  font-family: var(--font-heading); font-size: 64px;
+  line-height: 1; margin-bottom: 4px;
+}
+.pricing-price .currency { font-size: 32px; vertical-align: top; }
+.pricing-period { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 30px; }
+.pricing-features { list-style: none; margin-bottom: 30px; }
+.pricing-features li {
+  padding: 10px 0; font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; gap: 10px;
+}
+.pricing-features li::before {
+  content: '✓'; color: var(--red); font-weight: 700;
+}
+.pricing-card.featured .pricing-features li::before { color: var(--white); }
+.pricing-card .btn { width: 100%; justify-content: center; }
+
+/* ============ РАСПИСАНИЕ ============ */
+.schedule {
+  background: var(--black-2);
+}
+.schedule-filters {
+  display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px; font-size: 12px; text-transform: uppercase;
+  letter-spacing: 1.5px; transition: var(--transition);
+}
+.filter-btn:hover { border-color: var(--red); }
+.filter-btn.active { background: var(--red); border-color: var(--red); }
+
+.schedule-table {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
+  background: rgba(255,255,255,0.08);
+}
+.schedule-day {
+  background: var(--black); padding: 20px 15px;
+}
+.schedule-day-title {
+  font-family: var(--font-heading); font-size: 18px;
+  letter-spacing: 2px; margin-bottom: 16px; color: var(--red);
+  padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.class-item {
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer; transition: var(--transition);
+}
+.class-item:last-child { border-bottom: none; }
+.class-item:hover { padding-left: 5px; }
+.class-time {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--red); margin-bottom: 4px;
+}
+.class-name {
+  font-size: 13px; font-weight: 500;
+}
+.class-trainer {
+  font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px;
+}
+@media (max-width: 1024px) {
+  .schedule-table { grid-template-columns: 1fr; }
+}
+
+/* ============ ТРЕНЕРЫ ============ */
+.trainers-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+@media (max-width: 1024px) { .trainers-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .trainers-grid { grid-template-columns: 1fr; } }
+
+.trainer-card {
+  position: relative; aspect-ratio: 3/4; overflow: hidden;
+  cursor: pointer; background: var(--black-3);
+}
+.trainer-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%); transition: var(--transition);
+}
+.trainer-card:hover img { filter: grayscale(0); transform: scale(1.05); }
+.trainer-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 30px 20px 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+.trainer-name {
+  font-family: var(--font-heading); font-size: 24px;
+  letter-spacing: 1.5px; margin-bottom: 4px;
+}
+.trainer-spec {
+  font-size: 12px; color: var(--red); text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ============ АКЦИИ ============ */
+.promo {
+  background: linear-gradient(135deg, var(--red) 0%, #9A0411 100%);
+  position: relative; overflow: hidden;
+}
+.promo::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 40px);
+}
+.promo-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 800px; margin: 0 auto;
+}
+.promo h2 {
+  font-family: var(--font-heading); font-size: clamp(40px, 7vw, 100px);
+  line-height: 1; letter-spacing: -1px; margin-bottom: 20px;
+}
+.promo p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+
+.countdown {
+  display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;
+}
+.countdown-item { text-align: center; }
+.countdown-num {
+  font-family: var(--font-mono); font-size: clamp(36px, 5vw, 64px);
+  font-weight: 500; background: rgba(0,0,0,0.3); padding: 15px 20px;
+  border-radius: 12px; min-width: 90px; display: block;
+}
+.countdown-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+  margin-top: 8px; opacity: 0.7;
+}
+.promo .btn-outline { border-color: var(--white); }
+.promo .btn-outline:hover { background: var(--white); color: var(--red); }
+
+/* ============ ОТЗЫВЫ ============ */
+.reviews-slider {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+}
+@media (max-width: 1024px) { .reviews-slider { grid-template-columns: 1fr; } }
+
+.review-card {
+  padding: 40px 30px; background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: var(--transition); position: relative;
+}
+.review-card:hover { border-color: var(--red); transform: translateY(-5px); }
+.review-quote {
+  font-size: 80px; color: var(--red); line-height: 0.5;
+  font-family: Georgia, serif; margin-bottom: 20px;
+  height: 30px;
+}
+.review-text { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+.review-author {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.review-avatar {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: var(--red); display: flex; align-items: center;
+  justify-content: center; font-weight: 700;
+}
+.review-name { font-weight: 500; margin-bottom: 2px; }
+.review-meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ============ КОНТАКТЫ ============ */
+.contacts-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+@media (max-width:@media (max-width: 1024px) { .contacts-grid { grid-template-columns: 1fr; } }
+
+.contacts-info h3 {
+  font-family: var(--font-heading); font-size: 24px;
+  letter-spacing: 2px; margin-bottom: 20px; color: var(--red);
+}
+.contact-item {
+  padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.contact-icon {
+  width: 40px; height: 40px; background: var(--red);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 18px;
+}
+.contact-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+  color: rgba(255,255,255,0.5); margin-bottom: 4px;
+}
+.contact-value { font-size: 16px; }
+.contact-value a:hover { color: var(--red); }
+
+.contact-form {
+  padding: 40px; background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.form-group input, .form-group textarea {
+  width: 100%; padding: 14px 16px; background: var(--black);
+  border: 1px solid rgba(255,255,255,0.1); color: var(--white);
+  font-family: inherit; font-size: 15px; transition: var(--transition);
+  border-radius: 6px;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--red);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.social-links {
+  display: flex; gap: 12px; margin-top: 30px;
+}
+.social-link {
+  width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; transition: var(--transition);
+}
+.social-link:hover {
+  background: var(--red); border-color: var(--red);
+  transform: translateY(-3px);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--black); border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 80px 0 30px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px 30px; } }
+@media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-about p {
+  color: rgba(255,255,255,0.5); font-size: 14px;
+  margin: 20px 0; max-width: 320px;
+}
+.footer-col h4 {
+  font-family: var(--font-heading); font-size: 18px;
+  letter-spacing: 2px; margin-bottom: 20px; color: var(--red);
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-size: 14px; color: rgba(255,255,255,0.6);
+  transition: var(--transition);
+}
+.footer-col a:hover { color: var(--red); padding-left: 5px; }
+
+.newsletter {
+  display: flex; gap: 8px; margin-top: 16px;
+}
+.newsletter input {
+  flex: 1; padding: 12px 16px; background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.1); color: var(--white);
+  font-family: inherit; font-size: 13px; border-radius: 6px;
+}
+.newsletter input:focus { outline: none; border-color: var(--red); }
+.newsletter button {
+  padding: 12px 20px; background: var(--red); border-radius: 6px;
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.5px; transition: var(--transition);
+}
+.newsletter button:hover { background: var(--red-hover); }
+
+.footer-bottom {
+  padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+  font-size: 12px; color: rgba(255,255,255,0.4);
+}
+.footer-bottom a:hover { color: var(--red); }
+
+/* ============ МОДАЛКА ============ */
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+  z-index: 10000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: var(--transition);
+  backdrop-filter: blur(10px); padding: 20px;
+}
+.modal.active { opacity: 1; visibility: visible; }
+.modal-content {
+  background: var(--black-2); border: 1px solid rgba(255,255,255,0.1);
+  padding: 50px 40px; max-width: 500px; width: 100%;
+  position: relative; transform: scale(0.9); transition: transform var(--transition);
+  border-radius: 12px;
+}
+.modal.active .modal-content { transform: scale(1); }
+.modal-close {
+  position: absolute; top: 20px; right: 20px; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.modal-close:hover { background: var(--red); transform: rotate(90deg); }
+.modal h3 {
+  font-family: var(--font-heading); font-size: 32px;
+  letter-spacing: 2px; margin-bottom: 10px;
+}
+.modal p { color: rgba(255,255,255,0.6); margin-bottom: 24px; font-size: 14px; }
+
+/* ============ COOKIE БАННЕР ============ */
+.cookie {
+  position: fixed; bottom: 20px; left: 20px; right: 20px;
+  max-width: 500px; margin: 0 auto;
+  background: var(--black-2); border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 24px; border-radius: 12px; z-index: 998;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  transform: translateY(150%); transition: transform 0.5s;
+}
+.cookie.show { transform: translateY(0); }
+.cookie p { font-size: 13px; color: rgba(255,255,255,0.7); flex: 1; min-width: 200px; }
+.cookie button {
+  padding: 10px 20px; background: var(--red); color: var(--white);
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.5px; border-radius: 6px;
+}
+
+/* ============ АНИМАЦИИ ПОЯВЛЕНИЯ ============ */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+
+<body>
+
+<!-- КУРСОР -->
+<div class="cursor" id="cursor"></div>
+
+<!-- ПРЕЛОАДЕР -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">TIME<span>.</span>FITNESS</div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">TIME<span>.</span>FITNESS</a>
+    <nav class="nav">
+      <a href="#about">О клубе</a>
+      <a href="#pricing">Абонементы</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#trainers">Тренеры</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <button class="city-switch">Москва ▾</button>
+      <button class="btn btn-primary" onclick="openModal()">Записаться</button>
+      <button class="burger" id="burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- МОБИЛЬНОЕ МЕНЮ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">О клубе</a>
+  <a href="#pricing">Абонементы</a>
+  <a href="#schedule">Расписание</a>
+  <a href="#trainers">Тренеры</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contacts">Контакты</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-label">Премиум фитнес-клуб</div>
+    <h1>
+      ВРЕМЯ<br>
+      <span class="outline">ТРЕНИРОВАТЬСЯ</span><br>
+      <span class="accent">СЕЙЧАС.</span>
+    </h1>
+    <p class="hero-sub">Современное оборудование, лучшие тренеры города и атмосфера, которая заряжает. Начни путь к идеальной форме сегодня.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="openModal()">
+        Первая тренировка бесплатно
+        <span class="btn-arrow">→</span>
+      </button>
+      <a href="#pricing" class="btn btn-outline">Посмотреть тарифы</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">Скролл вниз</div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<section class="features" id="about">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-count="2500">0</div>
+        <div class="stat-label">м² площади</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="45">0</div>
+        <div class="stat-label">тренеров</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="12000">0</div>
+        <div class="stat-label">участников</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="15">0</div>
+        <div class="stat-label">лет на рынке</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-label">Почему мы</div>
+      <h2 class="section-title">Твой новый уровень <span class="accent">— здесь.</span></h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">💪</div>
+        <h3>ТОП-ОБОРУДОВАНИЕ</h3>
+        <p>Технологичные тренажёры Technogym и Hammer Strength для максимальной эффективности.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏊</div>
+        <h3>БАССЕЙН 25М</h3>
+        <p>Чистая вода, профессиональные дорожки, аквааэробика и детские секции.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔥</div>
+        <h3>ГРУППОВЫЕ ПРОГРАММЫ</h3>
+        <p>Более 50 направлений в неделю: йога, кроссфит, танцы, единоборства.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🧖</div>
+        <h3>SPA-ЗОНА</h3>
+        <p>Финская сауна, турецкий хаммам, инфракрасная кабина и зона релакса.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">👨‍🏫</div>
+        <h3>ПЕРСОНАЛЬНЫЕ ТРЕНЕРЫ</h3>
+        <p>Индивидуальный план, контроль питания и сопровождение к цели.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⏰</div>
+        <h3>24/7 ДОСТУП</h3>
+        <p>Тренируйся в любое удобное время — мы работаем круглосуточно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- АБОНЕМЕНТЫ -->
+<section id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Абонементы</div>
+      <h2 class="section-title">Выбери свой <span class="accent">тариф.</span></h2>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-name">START</div>
+        <div class="pricing-desc">Идеальный старт в мир фитнеса</div>
+        <div class="pricing-price"><span class="currency">₽</span>2 900</div>
+        <div class="pricing-period">в месяц</div>
+        <ul class="pricing-features">
+          <li>Доступ в тренажёрный зал</li>
+          <li>Групповые программы</li>
+          <li>Раздевалка и душ</li>
+          <li>Вводное занятие</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openModal()">Выбрать</button>
+      </div>
+
+      <div class="pricing-card featured reveal">
+        <div class="pricing-badge">Популярный</div>
+        <div class="pricing-name">PREMIUM</div>
+        <div class="pricing-desc">Всё, что нужно для результата</div>
+        <div class="pricing-price"><span class="currency">₽</span>4 900</div>
+        <div class="pricing-period">в месяц</div>
+        <ul class="pricing-features">
+          <li>Всё из тарифа START</li>
+          <li>Бассейн и аквапрограммы</li>
+          <li>SPA-зона (сауна, хаммам)</li>
+          <li>Гостевые визиты (2 в мес)</li>
+          <li>Заморозка абонемента</li>
+        </ul>
+        <button class="btn btn-primary" style="background:var(--white);color:var(--red);" onclick="openModal()">Выбрать</button>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-name">VIP</div>
+        <div class="pricing-desc">Максимум комфорта и сервиса</div>
+        <div class="pricing-price"><span class="currency">₽</span>9 900</div>
+        <div class="pricing-period">в месяц</div>
+        <ul class="pricing-features">
+          <li>Всё из тарифа PREMIUM</li>
+          <li>4 персональные тренировки</li>
+          <li>VIP-раздевалка</li>
+          <li>Индивидуальное питание</li>
+          <li>Бесплатные гости</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openModal()">Выбрать</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- РАСПИСАНИЕ -->
+<section class="schedule" id="schedule">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Расписание</div>
+      <h2 class="section-title">Групповые <span class="accent">программы.</span></h2>
+    </div>
+
+    <div class="schedule-filters reveal">
+      <button class="filter-btn active">Все</button>
+      <button class="filter-btn">Силовые</button>
+      <button class="filter-btn">Кардио</button>
+      <button class="filter-btn">Йога</button>
+      <button class="filter-btn">Танцы</button>
+      <button class="filter-btn">Бассейн</button>
+    </div>
+
+    <div class="schedule-table reveal">
+      <div class="schedule-day">
+        <div class="schedule-day-title">Пн</div>
+        <div class="class-item"><div class="class-time">08:00</div><div class="class-name">Йога</div><div class="class-trainer">Анна К.</div></div>
+        <div class="class-item"><div class="class-time">10:30</div><div class="class-name">Кроссфит</div><div class="class-trainer">Максим В.</div></div>
+        <div class="class-item"><div class="class-time">19:00</div><div class="class-name">Бокс</div><div class="class-trainer">Игорь С.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Вт</div>
+        <div class="class-item"><div class="class-time">09:00</div><div class="class-name">Пилатес</div><div class="class-trainer">Ольга М.</div></div>
+        <div class="class-item"><div class="class-time">18:00</div><div class="class-name">Zumba</div><div class="class-trainer">Мария Л.</div></div>
+        <div class="class-item"><div class="class-time">20:30</div><div class="class-name">Аква</div><div class="class-trainer">Дмитрий П.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Ср</div>
+        <div class="class-item"><div class="class-time">08:00</div><div class="class-name">Йога</div><div class="class-trainer">Анна К.</div></div>
+        <div class="class-item"><div class="class-time">19:00</div><div class="class-name">HIIT</div><div class="class-trainer">Максим В.</div></div>
+        <div class="class-item"><div class="class-time">21:00</div><div class="class-name">Стретчинг</div><div class="class-trainer">Ольга М.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Чт</div>
+        <div class="class-item"><div class="class-time">10:00</div><div class="class-name">Пилатес</div><div class="class-trainer">Ольга М.</div></div>
+        <div class="class-item"><div class="class-time">18:30</div><div class="class-name">Кроссфит</div><div class="class-trainer">Максим В.</div></div>
+        <div class="class-item"><div class="class-time">20:00</div><div class="class-name">Тайский бокс</div><div class="class-trainer">Игорь С.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Пт</div>
+        <div class="class-item"><div class="class-time">09:00</div><div class="class-name">Йога</div><div class="class-trainer">Анна К.</div></div>
+        <div class="class-item"><div class="class-time">19:00</div><div class="class-name">Zumba</div><div class="class-trainer">Мария Л.</div></div>
+        <div class="class-item"><div class="class-time">21:00</div><div class="class-name">Аква</div><div class="class-trainer">Дмитрий П.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Сб</div>
+        <div class="class-item"><div class="class-time">10:00</div><div class="class-name">Кроссфит</div><div class="class-trainer">Максим В.</div></div>
+        <div class="class-item"><div class="class-time">12:00</div><div class="class-name">Танцы</div><div class="class-trainer">Мария Л.</div></div>
+        <div class="class-item"><div class="class-time">15:00</div><div class="class-name">Йога</div><div class="class-trainer">Анна К.</div></div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-title">Вс</div>
+        <div class="class-item"><div class="class-time">11:00</div><div class="class-name">Стретчинг</div><div class="class-trainer">Ольга М.</div></div>
+        <div class="class-item"><div class="class-time">13:00</div><div class="class-name">Аква</div><div class="class-trainer">Дмитрий П.</div></div>
+        <div class="class-item"><div class="class-time">17:00</div><div class="class-name">Бокс</div><div class="class-trainer">Игорь С.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ТРЕНЕРЫ -->
+<section id="trainers">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Команда</div>
+      <h2 class="section-title">Наши <span class="accent">тренеры.</span></h2>
+    </div>
+
+    <div class="trainers-grid">
+      <div class="trainer-card reveal">
+        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80" alt="Максим Волков">
+        <div class="trainer-info">
+          <div class="trainer-name">МАКСИМ ВОЛКОВ</div>
+          <div class="trainer-spec">Кроссфит · HIIT</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Анна Королёва">
+        <div class="trainer-info">
+          <div class="trainer-name">АННА КОРОЛЁВА</div>
+          <div class="trainer-spec">Йога · Пилатес</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="Игорь Стрельцов">
+        <div class="trainer-info">
+          <div class="trainer-name">ИГОРЬ СТРЕЛЬЦОВ</div>
+          <div class="trainer-spec">Бокс · ММА</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal">
+        <img src="https://images.unsplash.com/photo-1609899537878-88d5ba429bdf?w=600&q=80" alt="Мария Лебедева">
+        <div class="trainer-info">
+          <div class="trainer-name">МАРИЯ ЛЕБЕДЕВА</div>
+          <div class="trainer-spec">Zumba · Танцы</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- АКЦИЯ -->
+<section class="promo">
+  <div class="container promo-content reveal">
+    <div class="section-label" style="color:var(--white)">Специальное предложение</div>
+    <h2>-50% НА ПЕРВЫЙ МЕСЯЦ</h2>
+    <p>Успей оформить годовой абонемент по акции. Предложение ограничено.</p>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-num" id="days">00</span>
+        <div class="countdown-label">Дней</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="hours">00</span>
+        <div class="countdown-label">Часов</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="minutes">00</span>
+        <div class="countdown-label">Минут</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="seconds">00</span>
+        <div class="countdown-label">Секунд</div>
+      </div>
+    </div>
+    <button class="btn btn-outline" onclick="openModal()">Забрать скидку <span class="btn-arrow">→</span></button>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section id="reviews">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Отзывы</div>
+      <h2 class="section-title">Говорят наши <span class="accent">клиенты.</span></h2>
+    </div>
+
+    <div class="reviews-slider">
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">Занимаюсь в TIME FITNESS уже 2 года. За это время сбросил 15 кг и нашёл реальных друзей. Тренеры — профессионалы, зал всегда чистый, оборудование топовое.</p>
+        <div class="review-author">
+          <div class="review-avatar">АП</div>
+          <div>
+            <div class="review-name">Александр П.</div>
+            <div class="review-meta">Клиент с 2022 года · ★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">Лучший клуб в городе! Особенно нравится зона SPA после тренировки и расписание групповых программ. Идеальное соотношение цены и качества.</p>
+        <div class="review-author">
+          <div class="review-avatar">ЕС</div>
+          <div>
+            <div class="review-name">Екатерина С.</div>
+            <div class="review-meta">Клиент с 2023 года · ★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">Персональный тренер составил программу точно под мои цели. Результат виден уже через месяц. Атмосфера заряжает, хочется возвращаться снова и снова.</p>
+        <div class="review-author">
+          <div class="review-avatar">ДМ</div>
+          <div>
+            <div class="review-name">Дмитрий М.</div>
+            <div class="review-meta">Клиент с 2024 года · ★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Контакты</div>
+      <h2 class="section-title">Найди нас <span class="accent">легко.</span></h2>
+    </div>
+
+    <div class="contacts-grid">
+      <div class="contacts-info reveal">
+        <h3>Основной клуб</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Адрес</div>
+            <div class="contact-value">г. Москва, ул. Тверская, 15</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value"><a href="tel:+74951234567">+7 (495) 123-45-67</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:info@time-fitness.ru">info@time-fitness.ru</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Режим работы</div>
+            <div class="contact-value">Круглосуточно · 24/7</div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Telegram">✈️</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+          <a href="#" class="social-link" aria-label="VK">🔵</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" onsubmit="handleSubmit(event)">
+        <h3 style="font-family:var(--font-heading);font-size:24px;letter-spacing:2px;margin-bottom:24px;">Оставить заявку</h3>
+        <div class="form-group">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Сообщение</label>
+          <textarea id="message" name="message" placeholder="Расскажите, что вас интересует..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Отправить заявку <span class="btn-arrow">→</span>
+        </button>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:16px;text-align:center;">
+          Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#" class="logo">TIME<span>.</span>FITNESS</a>
+        <p>Премиальный фитнес-клуб с современным оборудованием и лучшими тренерами. Работаем 24/7 для вашего результата.</p>
+        <div class="newsletter">
+          <input type="email" placeholder="Ваш email">
+          <button>OK</button>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Клуб</h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#pricing">Абонементы</a></li>
+          <li><a href="#schedule">Расписание</a></li>
+          <li><a href="#trainers">Тренеры</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <ul>
+          <li><a href="#">Тренажёрный зал</a></li>
+          <li><a href="#">Групповые программы</a></li>
+          <li><a href="#">Бассейн</a></li>
+          <li><a href="#">SPA-зона</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+          <li><a href="mailto:info@time-fitness.ru">info@time-fitness.ru</a></li>
+          <li><a href="#">Москва, Тверская 15</a></li>
+          <li><a href="#">24/7</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2025 TIME FITNESS. Все права защищены.</div>
+      <div>
+        <a href="#">Политика конфиденциальности</a> · 
+        <a href="#">Публичная оферта</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- МОДАЛКА -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>ЗАПИСАТЬСЯ</h3>
+    <p>Оставьте контакты — мы перезвоним и подберём подходящий абонемент.</p>
+    <form onsubmit="handleSubmit(event, true)">
+      <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-group">
+        <label>Телефон</label>
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+        Отправить <span class="btn-arrow">→</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- COOKIE БАННЕР -->
+<div class="cookie" id="cookie">
+  <p>🍪 Мы используем cookies для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим.</p>
+  <button onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+/* ===== ПРЕЛОАДЕР ===== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+  }, 800);
+});
+
+/* ===== КАСТОМНЫЙ КУРСОР ===== */
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .trainer-card, .feature-card, .pricing-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+/* ===== СКРОЛЛ ХЕДЕРА ===== */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+/* ===== БУРГЕР-МЕНЮ ===== */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ===== ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ===== СЧЁТЧИКИ ===== */
+const counters = document.querySelectorAll('.stat-number');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = +el.dataset.count;
+      let current = 0;
+      const step = target / 60;
+      const update = () => {
+        current += step;
+        if (current < target) {
+          el.textContent = Math.floor(current).toLocaleString('ru');
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target.toLocaleString('ru');
+        }
+      };
+      update();
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+/* ===== ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ===== */
+function updateCountdown() {
+  const target = new Date();
+  target.setDate(target.getDate() + 7);
+  target.setHours(23, 59, 59);
+
+  setInterval(() => {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const s = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2,'0');
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  }, 1000);
+}
+updateCountdown();
+
+/* ===== ФИЛЬТРЫ РАСПИСАНИЯ ===== */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+/* ===== МОДАЛКА ===== */
+function openModal() {
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', (e) => {
+  if (e.target.id === 'modal') closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ===== МАСКА ТЕЛЕФОНА ===== */
+document.querySelectorAll('input[type="tel"]').forEach(input => {
+  input.addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (!v.startsWith('7')) v = '7' + v;
+    let formatted = '+7';
+    if (v.length > 1) formatted += ' (' + v.slice(1, 4);
+    if (v.length >= 5) formatted += ') ' + v.slice(4, 7);
+    if (v.length >= 8) formatted += '-' + v.slice(7, 9);
+    if (v.length >= 10) formatted += '-' + v.slice(9, 11);
+    e.target.value = formatted;
+  });
+});
+
+/* ===== ОТПРАВКА ФОРМ ===== */
+function handleSubmit(e, isModal = false) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = 'Отправка...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.innerHTML = '✓ Заявка отправлена!';
+    btn.style.background = '#10b981';
+    form.reset();
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      if (isModal) closeModal();
+    }, 2500);
+  }, 1200);
+}
+
+/* ===== COOKIE ===== */
+if (!localStorage.getItem('cookiesAccepted')) {
+  setTimeout(() => document.getElementById('cookie').classList.add('show'), 2000);
+}
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  document.getElementById('cookie').classList.remove('show');
+}
+
+/* ===== ПЛАВНЫЙ СКРОЛЛ ПО ЯКОРЯМ ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
